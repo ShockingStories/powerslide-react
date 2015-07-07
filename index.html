@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>PowerSlideNZ BETA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script type="text/javascript" src="/js/all.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiIKKCYiWgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiIgKCYiuygmIhgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiJDKCYi7SgmIlIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiJzKCYi/SgmIqAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgmIgooJiKmKCYi/ygmIuAoJiIOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgmIh8oJiLPKCYi/ygmIv4oJiI/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgmIkEoJiLrKCYi/ygmIv8oJiKMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgmInAoJiL8KCYi/ygmIv8oJiL/KCYiySgmIpwoJiJzKCYiKQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgmIhYoJiJyKCYinCgmIsIoJiL8KCYi/ygmIv8oJiL/KCYinygmIgkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiJTKCYi/ygmIv8oJiL5KCYiaAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiIeKCYi7ygmIv8oJiLjKCYiNwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoJiIDKCYixCgmIv8oJiK+KCYiFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCYigigmIv8oJiKJKCYiAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCYiPigmIvAoJiJSAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKCYiEigmIrooJiInAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgmIlooJiIMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP/3AAD/7wAA/88AAP8fAAD+PwAA/D8AAPgfAAD4DwAA/j8AAPx/AAD4/wAA8f8AAPf/AADv/wAA//8AAA==" rel="icon" type="image/x-icon" />
+  </head>
+
+  <body>
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h1><a class="navbar-brand" href="#">PowerSlide NZ BETA</a></h1>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#what">What can we do?</a></li>
+        <li><a href="#ref">References</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+  <div class="container">
+    <div class="well well-sm">
+      See our current greenhouse gas emissions and costs from the energy sector in New Zealand and explore different actions that change them
+    </div> 
+  <div class="row metrics">
+    <!-- Buffer -->
+    <div class="col-xs-1 key">
+    </div>
+    <div class="col-xs-2">
+      <i class="fa fa-cloud"></i>
+      <h3>CO<sub>2</sub> <span id="h3-emissions">Emissions</span></h3>
+      <div id="co2-chart" class="chart"></div>
+      <h3><span id="co2-total">1000</span> kt <a href="#ref1"><sup>1</sup></a></h3>
+    </div>
+    <div class="col-xs-2">
+      <i class="fa fa-bolt"></i>
+      <h3>Power <span id="h3-generated">Generated</span></h3>
+      <div id="gwh-chart" class="chart"></div>
+      <h3><span id="gwh-total">1000</span> GWh <a href="#ref2"><sup>2</sup></a></h3>
+    </div>
+    <div class="col-xs-2">
+      <i class="fa fa-dollar"></i>
+      <h3>Annual Cost</h3>
+      <div id="cost-chart" class="chart"></div>
+      <h3>$<span id="cost-total">100</span> million <a href="#ref3"><sup>3</sup></a></h3>
+    </div>
+    <div class="col-xs-2">
+      <i class="fa fa-university"></i>
+      <h3>Investment Cost</h3>
+      <div id="investment-chart" class="chart"></div>
+      <h3>$<span id="investment-total">100</span> billion <a href="#ref4"><sup>4</sup></a></h3>
+    </div>
+    <div class="col-xs-2 key">
+      <div class="color vehicles"></div><span> Vehicles</span>
+      <div class="color solar"></div><span> Solar</span>
+      <div class="color gas"></div><span> Gas</span>
+      <div class="color coal"></div><span> Coal</span>
+      <div class="color wind"></div><span> Wind</span>
+      <div class="color geo"></div><span> Geo<span id="thermal">thermal</span></span>
+      <div class="color hydro"></div><span> Hydro</span>
+    </div>
+  </div>
+
+  <a class="anchor" id="what"></a>
+  <h2>What can we do?</h2>
+  <div class="row decisions">
+
+    <div class="col-sm-6 media">
+      <div class="media-left">
+        <i class="fa fa-home"></i>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">Insulate Houses <a href="#ref5"><sup>5</sup></a></h3>
+          <form>
+            <input id="homeRange" type="range" name="amountRange" min="0" max="500000" value="0" step=1000 oninput="updateCharts('home', this.value)" />
+            <input id="homeNumber" type="number" name="amountInput" min="0" max="500000" value="0" step=1000 oninput="updateCharts('home', this.value)" /> 
+            <p class="unit">More Homes in NZ Insulated</p>
+          </form>
+      </div>
+    </div>
+
+    <div class="col-sm-6 media">
+      <div class="media-left">
+        <i class="fa fa-sun-o"></i>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">Install Solar Panels <a href="#ref6"><sup>6</sup></a></h3>
+          <form>
+            <input id="solarRange" type="range" name="amountRange" min="0" max="1000000" value="0" step=1000 oninput="updateCharts('solar', this.value)" />
+            <input id="solarNumber" type="number" name="amountInput" min="0" max="1000000" value="0" step=1000 oninput="updateCharts('solar', this.value)" /> 
+            <p class="unit">Homes in NZ with Solar Panels</p>
+          </form>
+      </div>
+    </div>
+
+    <div class="col-sm-6 media">
+      <div class="media-left">
+        <img src="windmill.png">
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">Build Windfarms <a href="#ref7"><sup>7</sup></a></h3>
+          <form>
+            <input id="windfarmRange" type="range" name="amountRange" min="0" max="19" value="0" oninput="updateCharts('windfarm', this.value)" />
+            <input id="windfarmNumber" type="number" name="amountInput" min="0" max="19" value="0" oninput="updateCharts('windfarm', this.value)" /> 
+            <p class="unit">New 200 MW Windfarms</p>
+          </form>
+      </div>
+    </div>
+
+    <div class="col-sm-6 media">
+      <div class="media-left">
+        <i class="fa fa-car"></i>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">Buy Electric Cars <a href="#ref8"><sup>8</sup></a></h3>
+          <form>
+            <input id="carRange" type="range" name="amountRange" min="0" max="50" value="0" oninput="updateCharts('car', this.value)" />
+            <input id="carNumber" type="number" name="amountInput" min="0" max="50" value="0" oninput="updateCharts('car', this.value)" />
+            <p class="unit">% Electric Cars</p> 
+            <!-- ROSS: UNCOMMENT AND REPLACE ABOVE WHEN FUNCTION CHANGES FROM % to Number 
+            <input id="carRange" type="range" name="amountRange" min="0" max="1000000" value="0" step=1000 oninput="updateCharts('car', this.value)" />
+            <input id="carNumber" type="number" name="amountInput" min="0" max="1000000" value="0" step=1000 oninput="updateCharts('car', this.value)" />
+            <p class="unit">Electric Cars</p>
+            --> 
+          </form>
+      </div>
+    </div>
+
+    <div class="col-sm-6 media">
+      <div class="media-left">
+        <i class="fa fa-bicycle"></i>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">Get On Ya Bike!<a href="#ref9"><sup>9</sup></a></h3>
+          <form>
+            <!-- ROSS: UNCOMMENT AND REPLACE ABOVE WHEN FUNCTION CHANGES FROM % to Number 
+            <input id="bicycleRange" type="range" name="amountRange" min="0" max="1000000" value="0" step=1000 oninput="updateCharts('bicycle', this.value)" />
+            <input id="bicycleNumber" type="number" name="amountInput" min="0" max="1000000" value="0" step=1000 oninput="updateCharts('bicycle', this.value)" /> 
+            <p class="unit bike">More People Commuting by Bicycle</p>
+            --> 
+            <input id="bicycleRange" type="range" name="amountRange" min="0" max="100" value="0" oninput="updateCharts('bicycle', this.value)" />
+            <input id="bicycleNumber" type="number" name="amountInput" min="0" max="100" value="0" oninput="updateCharts('bicycle', this.value)" /> 
+            <p class="unit">% People Commuting by Bicycle</p>
+          </form>
+      </div>
+    </div>
+
+    <div id="powerOff" class="col-sm-6 media">
+      <div class="media-left">
+        <i class="fa fa-power-off"></i>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading">Turn off your computer</h3>
+        <input id="powerOffRange" type="range" name="amountRange" min="0" max="100" value="0" onchange="powerOff()" />
+      </div>
+    </div>
+  </div>
+  
+  <a class="anchor" id="ref"></a>
+  <h2>References</h2>
+  <p>DISCLAIMER: PowerSlideNZ is a proof of concept and currently only in the BETA testing phase. These calculation need to be validated and should not be used to plan energy investments. <a href= "mailto:info@powerslide.nz">Let us know</a> if you are interested in supporting the further development of PowerSlide.</p>
+  <p>Aggregation and analysis of these data sources can be found on the <a href="https://docs.google.com/spreadsheets/d/1rjZZg19gH4ST3XFfPaUmvgC90ACKgRw8x-MgoozkLfI/edit?usp=sharing">PowerSlideNZ Data Reference Google Spreadsheet</a>.</p>
+  <a class="anchor" id="ref1"></a>
+  <h3><sup>1</sup> CO<sub>2</sub> Emissions</h3>
+    <ul>
+      <li>Carbon dioxide emissions equivalent, <a href=http://www.med.govt.nz/sectors-industries/energy/energy-modelling/data/greenhouse-gas-emissions>Energy sector greenhouse gas emissions</a>, (<a href=http://www.mbie.govt.nz/>Ministry of Business Innovation and Employment</a>)</li>
+      <li>Carbon dioxide equivalent emissions (CO2-e) from domestic transport (road, rail, maritime, aviation), <a href=http://www.transport.govt.nz/ourwork/tmif/environmental/ei001/>Environmental impact of transport : Climate change</a>, (<a href=http://www.transport.govt.nz/>Ministry of Transport</a>)</li>
+    </ul>
+  <a class="anchor" id="ref2"></a>
+  <h3><sup>2</sup> Power Generated</h3>
+  <ul>
+      <li>Annual electricity generation and consumption (Net Generation (GWh)), <a href=http://www.med.govt.nz/sectors-industries/energy/energy-modelling/data/electricity>Electricity graph and data tables</a>, (<a href=http://www.mbie.govt.nz/>Ministry of Business Innovation and Employment</a>)</li>
+  </ul>
+  
+  <a class="anchor" id="ref3"></a>
+  <h3><sup>3</sup> Cost Per Year</h3>
+  <ul>
+      <li>Generation costs, not retail costs.</li>
+      <li>Fixed and Variable Operation and Maintenance Costs, <a href=http://www.med.govt.nz/sectors-industries/energy/energy-modelling/technical-papers/2011-nz-generation-data-update>2011 NZ Generation Data Update</a>, (<a href=http://www.mbie.govt.nz/>Ministry of Business Innovation and Employment</a>)</li>
+      <li>New Zealand and Foreign Exchange Capital Investment, <a href=http://www.med.govt.nz/sectors-industries/energy/energy-modelling/modelling/interactive-electricity-generation-cost-model>Interactive Electricity Generation Cost Model</a>, (<a href=http://www.mbie.govt.nz/>Ministry of Business Innovation and Employment</a>)</li>
+  </ul>
+  
+  <a class="anchor" id="ref4"></a>
+  <h3><sup>4</sup> Investment</h3>
+  <ul>
+      <li>This tool ignores existing captial expenditure and only takes new investments into account</li>
+  </ul>
+  
+  <a class="anchor" id="ref5"></a>
+  <h3><sup>5</sup> Home Insulation</h3>
+  <ul>
+      <li>3571 kWh per year saving for 2,000 sq ft house, <a href=http://www.cellulose.org/HomeOwners/CalculateSavings.php>Insulation Saving Calculator</a>, (<a href=http://www.cellulose.org/>Cellulose Insulation Manufacturers Association</a>)</li>
+      <li>250,000 homes with no insulation, <a href=http://www.beaconpathway.co.nz/images/uploads/Final_Report_TE210_Thermal_Insulation_in_NZ.pdf>TE210 Thermal insulation in New Zealand homes: A Status Report</a>, (<a href=http://www.beaconpathway.co.nz/>Beacon Pathway Limited</a>)</li>  </ul>  
+  </ul>
+  <a class="anchor" id="ref6"></a>
+  <h3 id="ref6"><sup>6</sup> Solar Panels</h3>
+  <ul>
+      <li>$12,495 for 4kW solar PV installation, <a href=http://vector.co.nz/solar/how-much-will-it-cost>Vector Solar PV Price Quotes</a>, (<a href=http://vector.co.nz>Vector</a>)</li>
+      <li>Typcial generation of solar PV per year, 4kW system = ~5,260 kW, <a href=http://www.energywise.govt.nz/your-home/generating-your-own-energy/pv>Solar electricity generation Information</a>, (<a href=http://www.energywise.govt.nz/>Energy Efficiency and Conservation Authority</a>)</li>
+  </ul>
+
+  <a class="anchor" id="ref7"></a>
+  <h3><sup>7</sup> Windfarms</h3>
+    <ul>
+      <li>Investment and operating costs of proposed windfarms, <a href=http://www.med.govt.nz/sectors-industries/energy/energy-modelling/modelling/interactive-electricity-generation-cost-model>Interactive Electricity Generation Cost Model</a>, (<a href=http://www.mbie.govt.nz/>Ministry of Business Innovation and Employment</a>)</li>
+    </ul>
+
+  <a class="anchor" id="ref8"></a>
+  <h3><sup>8</sup> Electric Cars</h3>
+  <ul>
+      <li>Vehicle Fleet Size 3,341,013 vehicles, <a href=http://www.transport.govt.nz/research/newzealandvehiclefleetstatistics/>New Zealand Vehicle Fleet 2013</a>, (<a href=http://www.transport.govt.nz/>Ministry of Transport</a>)</li>
+      <li>Carbon dioxide equivalent emissions (CO2-e) from domestic transport (road, rail, maritime, aviation), <a href=http://www.transport.govt.nz/ourwork/tmif/environmental/ei001/>Environmental impact of transport : Climate change</a>, (<a href=http://www.transport.govt.nz/>Ministry of Transport</a>)</li>
+      <li>TV002 Road VKT (billions) by vehicle type, <a href=http://www.transport.govt.nz/ourwork/tmif/transport-volume/tv002/>Transport volume : Vehicle travel</a>, (<a href=http://www.transport.govt.nz/>Ministry of Transport</a>)</li>
+      <li>Vehicle efficiency, est 8.5l/100km, <a href=http://www.transport.govt.nz/research/newzealandvehiclefleetstatistics/>Fuel Cycle Values</a>, (<a href=http://www.transport.govt.nz/>Ministry of Transport</a>)</li>
+      <li>$39,900 for an Electric Vechicle, <a href=http://www.nissan.co.nz/Cars-Vehicles/LEAF/Range-and-Pricing>Nissan LEAF 2015 Range and Pricing</a>, (<a href=http://www.nissan.co.nz/>Nissan</a>)</li>
+      <li>Does not currently account for savings in reduced petrol usage</li>
+  </ul>
+
+  <a class="anchor" id="ref9"></a>
+  <h3><sup>9</sup> Bicycles</h3>
+  <ul>
+      <li>Assuming one bicycle displaces one car from the road</li>
+      <li>Does not currently account for savings in reduced petrol usage</li>
+  </ul>
+
+  <a class="anchor" id="about"></a>
+  <h2>About</h2>
+  <p>Powerslide BETA was developed over 46 hours at the <a href="http://govhack.org.nz/">GovHack NZ</a> (Auckland), July 2015</p>
+  <p>Source code available on GitHub <a href="https://github.com/ShockingStories/shocking">https://github.com/ShockingStories/shocking</a>.</p>
+
+  <h3>Video</h3>
+
+  <br>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/KOwfCuPDoyA" frameborder="0" allowfullscreen></iframe>
+  <br><br>
+
+  <h3 id="ref">Team</h3>
+  Brought to you by:
+  <ul class="team">
+      <li>Ross Arnold<a class='linkedin' href='https://nz.linkedin.com/in/rarnold'><img src='https://static.licdn.com/scds/common/u/img/webpromo/btn_profile_greytxt_80x15.png' width='80' height='15' border='0' alt='View Ross Arnold's profile on LinkedIn'></a><a href='https://twitter.com/rssrn' class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @rssrn</a></li>
+      <li>Rob Cardwell<a class='linkedin' href='https://nz.linkedin.com/pub/robert-cardwell/1b/87a/59'><img src='https://static.licdn.com/scds/common/u/img/webpromo/btn_profile_greytxt_80x15.png' width='80' height='15' border='0' alt='View Rob Cardwell's profile on LinkedIn'></a></li>
+      <li>Rich Churcher<a class='linkedin' href='https://www.linkedin.com/in/richchurcher'><img src='https://static.licdn.com/scds/common/u/img/webpromo/btn_profile_greytxt_80x15.png' width='80' height='15' border='0' alt='View Rich Churcher's profile on LinkedIn'></a><a href='https://twitter.com/richchurcher' class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @richchurcher</a></li>
+      <li>Michael Howden<a class='linkedin' href='https://nz.linkedin.com/in/michaelhowden'><img src='https://static.licdn.com/scds/common/u/img/webpromo/btn_profile_greytxt_80x15.png' width='80' height='15' border='0' alt='View Michael Howden's profile on LinkedIn'></a><a href='https://twitter.com/michaelhowden' class='twitter-follow-button' data-show-count='false' data-show-screen-name='false'>Follow @michaelhowden</a></li>
+      <li>Martin Kealey</li>
+  </ul>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <h3>Powered By</h3>
+    <ul>
+      <li>Google Spreadsheets</li>
+      <li>JavaScript</li>
+      <li>D3.js</li>
+      <li>Bootstrap</li>
+      <li>Cloudflare</li>
+    </ul>
+  <h3>Further Development</h3>
+    <ul>
+      <li>Show ROI for actions</li>
+      <li>More Actions: LED Light Bulbs? Different Generation Sources?</li>
+      <li>Add Retail Costs (currently only Generation Costs)</li>
+      <li>Add version showing the impact of individual’s actions - allowing them to decide the best action for themselves.</li>
+      <li>Analysis of Load Profile of production and consumption throughout the day to explore impact of home batteries and other smart grid applications</li>
+      <li>Integrate data from Government API (when available)</li>
+    </ul>
+  <h3>Contact</h3>
+  <a href= "mailto:info@powerslide.nz"><h4>info@powerslide.nz</h4></a>
+
+  </body>
+</html>
