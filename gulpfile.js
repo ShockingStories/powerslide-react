@@ -1,8 +1,10 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var jshint = require('gulp-jshint');
+var react = require('gulp-react');
+var sourcemaps = require('gulp-sourcemaps');
 var stripDebug = require('gulp-strip-debug');
 var uglify = require('gulp-uglify');
-var sourcemaps = require('gulp-sourcemaps');
  
 gulp.task('js', function () {
   return gulp.src([
@@ -11,7 +13,9 @@ gulp.task('js', function () {
     ])
     .pipe(sourcemaps.init())
       .pipe(concat('js/all.js'))
+      .pipe(jshint())
       .pipe(stripDebug())
+      .pipe(react())
       .pipe(uglify(true))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('.'));
